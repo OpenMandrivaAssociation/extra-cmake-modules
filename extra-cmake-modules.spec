@@ -7,8 +7,8 @@ Version:	0.0.11
 Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
-# http://download.kde.org/unstable/frameworks/4.95.0/%{name}%{?!git:-%{version}}.tar.xz
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/4.95.0/extra-cmake-modules-%{version}.tar.xz
+# http://download.kde.org/unstable/frameworks/4.97.0/%{name}%{?!git:-%{version}}.tar.xz
+Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/4.97.0/extra-cmake-modules-%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	cmake
 Requires:	qt5-devel
