@@ -4,7 +4,7 @@ Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	0.0.12
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 # http://download.kde.org/unstable/frameworks/4.98.0/%{name}%{?!git:-%{version}}.tar.xz
@@ -12,6 +12,8 @@ Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/4.98.0/extra-cmak
 BuildArch:	noarch
 BuildRequires:	cmake
 Requires:	qt5-devel
+Requires:	cmake
+Requires:	qmake5
 
 %description
 KDE Frameworks 5 cmake extra modules.
