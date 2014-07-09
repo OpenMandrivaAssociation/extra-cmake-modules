@@ -1,0 +1,13 @@
+--- extra-cmake-modules-1.0.0/kde-modules/KDECompilerSettings.cmake.omv~	2014-07-09 16:14:03.830491523 +0200
++++ extra-cmake-modules-1.0.0/kde-modules/KDECompilerSettings.cmake	2014-07-09 16:27:53.735116288 +0200
+@@ -309,10 +309,6 @@ endfunction()
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
+         ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" AND NOT APPLE) OR
+         ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel" AND NOT WIN32))
+-    # Linker warnings should be treated as errors
+-    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
+-    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
+-
+     # Do not allow undefined symbols, even in non-symbolic shared libraries
+     set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
+     set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_MODULE_LINKER_FLAGS}")
