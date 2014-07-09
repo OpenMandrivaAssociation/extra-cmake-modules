@@ -11,6 +11,9 @@ URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/stable/frameworks/5.0.0/extra-cmake-modules-%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	cmake
+BuildRequires:	cmake(Qt5LinguistTools)
+# For doc generation
+BuildRequires:	python-sphinx
 Requires:	qt5-devel
 Requires:	cmake
 Requires:	qmake5
