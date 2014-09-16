@@ -3,12 +3,12 @@
 Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	1.1.0
+Version:	1.2.1
 Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 # http://download.kde.org/unstable/frameworks/4.99.0/%{name}%{?!git:-%{version}}.tar.xz
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/stable/frameworks/5.1.0/extra-cmake-modules-%{version}.tar.xz
+Source0:	http://ftp5.gwdg.de/pub/linux/kde/stable/frameworks/5.2.0/extra-cmake-modules-%{version}.tar.xz
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
 Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
