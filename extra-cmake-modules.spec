@@ -1,14 +1,15 @@
 #define git 1
+%define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	1.3.0
+Version:	1.4.0
 Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
-# http://download.kde.org/unstable/frameworks/4.99.0/%{name}%{?!git:-%{version}}.tar.xz
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/stable/frameworks/5.2.0/extra-cmake-modules-%{version}.tar.xz
+Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
 Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
