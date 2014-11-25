@@ -1,6 +1,7 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%bcond_with gtk
 
 Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
@@ -23,7 +24,9 @@ Requires:	cmake
 Requires:	qmake5
 # Required by virtually all cmake modules shipped here
 Requires:	cmake(Qt5LinguistTools)
+%if %{with gtk}
 Requires:	qt5-platformtheme-gtk2
+%endif
 
 %description
 KDE Frameworks 5 cmake extra modules.
