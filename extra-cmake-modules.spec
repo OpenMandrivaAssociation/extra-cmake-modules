@@ -1,13 +1,11 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-%bcond_with gtk
-
 Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	1.4.0
-Release:	4
+Version:	1.5.0
+Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
@@ -25,9 +23,7 @@ Requires:	cmake
 Requires:	qmake5
 # Required by virtually all cmake modules shipped here
 Requires:	cmake(Qt5LinguistTools)
-%if %{with gtk}
 Requires:	qt5-platformtheme-gtk2
-%endif
 
 %description
 KDE Frameworks 5 cmake extra modules.
