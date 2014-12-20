@@ -24,7 +24,3 @@
     -DCMAKE_MODULE_LINKER_FLAGS="%(echo %ldflags|sed -e 's#-Wl,--no-undefined##')" \\\
     -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \\\
     -G Ninja
-
-%kde5_base_reqs \
-  BuildRequires: cmake ninja extra-cmake-modules5 \
-  BuildRequires: cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5Widgets)
