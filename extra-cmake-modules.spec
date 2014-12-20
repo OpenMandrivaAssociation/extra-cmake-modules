@@ -5,10 +5,11 @@ Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	1.5.0
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
+Source10:	kde5.macros
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
 Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
@@ -31,6 +32,7 @@ KDE Frameworks 5 cmake extra modules.
 %files
 %{_datadir}/ECM
 %{_mandir}/man7/*
+%{_sysconfdir}/rpm/macros.d/*
 %doc %{_docdir}/ECM
 
 #--------------------------------------------------------------------
@@ -47,3 +49,5 @@ ninja
 
 %install
 DESTDIR="%{buildroot}" ninja install -C build
+
+install -c -m 644 -D %{SOURCE10} "%{buildroot}"%{_sysconfdir}/rpm/macros.d/kde5.macros

@@ -1,0 +1,30 @@
+%cmake_kde5 \
+  %setup_compile_flags \
+  mkdir -p build \
+  cd build \
+  CROSSCOMPILE="" ; \
+%if %cross_compiling \
+  CROSSCOMPILE="-DCMAKE_TOOLCHAIN_FILE=\"%_prefix/%_target_platform/share/cmake/%_target_platform.toolchain\"" ; \
+%endif \
+  export CROSSCOMPILE ; \
+  %__cmake .. \\\
+    $CROSSCOMPILE \\\
+    -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
+    -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+    -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
+    -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
+%if "%{?_lib}" == "lib64" \
+    %{?_cmake_lib_suffix64} \\\
+%endif \
+    %{?_cmake_skip_rpath} \\\
+    %{?_cmake_verbose: -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON} \\\
+    -DBUILD_SHARED_LIBS:BOOL=ON \\\
+    -DBUILD_STATIC_LIBS:BOOL=OFF \\\
+    -DCMAKE_MODULE_LINKER_FLAGS="%(echo %ldflags|sed -e 's#-Wl,--no-undefined##')" \\\
+    -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \\\
+    -G Ninja
+
+%kde5_base_reqs \
+  BuildRequires: cmake ninja extra-cmake-modules5 \
+  BuildRequires: cmake(Qt5Core) cmake(Qt5Gui) cmake(Qt5Widgets)
