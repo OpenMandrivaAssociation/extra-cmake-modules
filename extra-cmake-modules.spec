@@ -17,7 +17,7 @@ BuildArch:	noarch
 BuildRequires:	cmake
 BuildRequires:	cmake(Qt5LinguistTools)
 # For doc generation
-BuildRequires:	python-sphinx
+BuildRequires:	python2-sphinx
 BuildRequires:	ninja
 Requires:	qt5-devel
 Requires:	cmake
