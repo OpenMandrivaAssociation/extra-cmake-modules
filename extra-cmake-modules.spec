@@ -18,6 +18,7 @@ BuildRequires:	cmake
 BuildRequires:	cmake(Qt5LinguistTools)
 # For doc generation
 BuildRequires:	python2-sphinx
+BuildRequires:	python2-setuptools
 BuildRequires:	ninja
 Requires:	qt5-devel
 Requires:	cmake
