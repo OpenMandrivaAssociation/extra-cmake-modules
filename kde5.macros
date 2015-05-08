@@ -1,3 +1,29 @@
+%_kde5_prefix %{_prefix}
+%_kde5_datadir %{_kde5_prefix}/share
+%_kde5_libdir %{_kde5_prefix}/%{_lib}
+%_kde5_libexecdir %{_kde5_libdir}/libexec
+%_kde5_sysconfdir %{_sysconfdir}
+%_kde5_iconsdir %{_kde5_datadir}/icons
+%_kde5_configdir %{_kde5_datadir}/config
+%_kde5_appsdir %{_kde5_datadir}/apps
+%_kde5_applicationsdir %{_kde5_datadir}/applications
+%_kde5_docdir %{_kde5_datadir}/doc
+%_kde5_bindir %{_kde5_prefix}/bin
+%_kde5_sbindir %{_kde5_prefix}/sbin
+%_kde5_includedir %{_kde5_prefix}/include
+%_kde5_mandir %{_kde5_datadir}/man
+%_kde5_autostart %{_kde5_sysconfdir}/xdg/autostart
+%_kde5_services %{_kde5_datadir}/kservices5
+%_kde5_servicetypes %{_kde5_datadir}/kservicetypes5
+%_kde5_notificationsdir %{_kde5_datadir}/knotifications
+%_kde5_plugindir %{_qt5_plugindir}/KF5
+%_kde5_mkspecsdir %{_kde5_libdir}/qt5/mkspecs/modules
+%_kde5_qmldir %{_kde5_libdir}/qt5/qml
+%_kde5_xmlguidir %{_kde5_datadir}/kxmlgui5
+# (tpg) we are keeping locales in common dir
+#%_kde5_localedir %{_localedir}/kf5
+%_kde5_debug Release
+
 %cmake_kde5 \
   %setup_compile_flags \
   mkdir -p build \
@@ -9,8 +35,15 @@
   export CROSSCOMPILE ; \
   %__cmake .. \\\
     $CROSSCOMPILE \\\
+    -Wno-dev \\\
+    -DCMAKE_BUILD_TYPE=%{_kde5_debug} \\\
     -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+    -DKDE_INSTALL_APPDIR=%{_kde5_applicationsdir} \\\
+    -DKDE_INSTALL_BINDIR=%{_kde5_bindir} \\\
+    -DKDE_INSTALL_LIBDIR=%{_kde5_libdir} \\\
+    -DKDE_INSTALL_INCLUDEDIR=%{_kde5_includedir} \\\
+    -DKDE_INSTALL_DOCBUNDLEDIR=%{_kde5_docdir}/HTML \\\
     -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
     -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
