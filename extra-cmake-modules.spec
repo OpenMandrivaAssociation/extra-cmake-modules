@@ -8,7 +8,7 @@ Version:	5.10.0
 Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
 Source10:	kde5.macros
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
