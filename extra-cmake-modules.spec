@@ -1,11 +1,12 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+
 Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.17.0
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
@@ -20,7 +21,6 @@ BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	python2-sphinx
 BuildRequires:	python2-setuptools
 BuildRequires:	ninja
-Requires:	qt5-devel
 Requires:	cmake
 Requires:	qmake5
 Requires:	ninja
