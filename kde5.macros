@@ -26,6 +26,10 @@
 
 %cmake_kde5 \
   %setup_compile_flags \
+  CPPFLAGS="${CPPFLAGS:-$CPPFLAGS -DPIC -fPIC}" ; export CPPFLAGS ; \
+  CFLAGS="${CFLAGS:-$CFLAGS -DPIC -fPIC}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-$CXXFLAGS -DPIC -fPIC}" ; export CXXFLAGS ; \
+  LDFLAGS="${LDFLAGS:-$LDFLAGS -DPIC -fPIC -Wl,-Bsymbolic-functions}" ; export LDFLAGS ; \
   mkdir -p build \
   cd build \
   CROSSCOMPILE="" ; \
@@ -38,7 +42,7 @@
     -Wno-dev \\\
     -DCMAKE_BUILD_TYPE=%{_kde5_debug} \\\
     -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
-    -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+    -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \\\
     -DKDE_INSTALL_APPDIR=%{_kde5_applicationsdir} \\\
     -DKDE_INSTALL_BINDIR=%{_kde5_bindir} \\\
     -DKDE_INSTALL_LIBDIR=%{_kde5_libdir} \\\
@@ -54,6 +58,14 @@
     %{?_cmake_verbose: -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON} \\\
     -DBUILD_SHARED_LIBS:BOOL=ON \\\
     -DBUILD_STATIC_LIBS:BOOL=OFF \\\
-    -DCMAKE_MODULE_LINKER_FLAGS="%(echo %ldflags|sed -e 's#-Wl,--no-undefined##')" \\\
+    -DCMAKE_C_FLAGS="${CFLAGS}" \\\
+    -DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \\\
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="${CFLAGS}" \\\
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \\\
+    -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}" \\\
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="${CXXFLAGS}" \\\
+    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \\\
+    -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \\\
+    -DCMAKE_MODULE_LINKER_FLAGS="%(echo ${LDFLAGS}|sed -e 's#-Wl,--no-undefined##')" \\\
     -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \\\
     -G Ninja
