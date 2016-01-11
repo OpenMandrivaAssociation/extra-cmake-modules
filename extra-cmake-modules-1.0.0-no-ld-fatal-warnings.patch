@@ -1,9 +1,10 @@
---- extra-cmake-modules-1.0.0/kde-modules/KDECompilerSettings.cmake.omv~	2014-07-09 16:14:03.830491523 +0200
-+++ extra-cmake-modules-1.0.0/kde-modules/KDECompilerSettings.cmake	2014-07-09 16:27:53.735116288 +0200
-@@ -309,10 +309,6 @@ endfunction()
- if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR
-         ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" AND NOT APPLE) OR
-         ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel" AND NOT WIN32))
+diff -Naur extra-cmake-modules-5.18.0/kde-modules/KDECompilerSettings.cmake extra-cmake-modules-5.18.0.tpg/kde-modules/KDECompilerSettings.cmake
+--- extra-cmake-modules-5.18.0/kde-modules/KDECompilerSettings.cmake	2015-12-29 09:33:34.000000000 +0000
++++ extra-cmake-modules-5.18.0.tpg/kde-modules/KDECompilerSettings.cmake	2016-01-11 00:07:22.872422618 +0000
+@@ -322,10 +322,6 @@
+ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
+         (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND NOT APPLE) OR
+         (CMAKE_CXX_COMPILER_ID STREQUAL "Intel" AND NOT WIN32))
 -    # Linker warnings should be treated as errors
 -    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
 -    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
