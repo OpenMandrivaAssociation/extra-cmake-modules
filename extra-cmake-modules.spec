@@ -46,9 +46,7 @@ KDE Frameworks 5 cmake extra modules.
 %endif
 
 %build
-%cmake \
-    QTDIR="%{_libdir}/qt5" ; export QTDIR ; \
-    PATH="%{_qt5_bindir}:$PATH" ; export PATH ; \
+%cmake_qt5 \
     -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
     -DKDE_INSTALL_QTPLUGINDIR=%{_qt5_plugindir} \
     -DKDE_INSTALL_PLUGINDIR=%{_qt5_plugindir} \
