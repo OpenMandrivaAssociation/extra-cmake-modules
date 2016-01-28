@@ -6,7 +6,7 @@ Name:		extra-cmake-modules5
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.18.0
-Release:	3
+Release:	4
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
@@ -17,6 +17,7 @@ Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
 BuildArch:	noarch
 BuildRequires:	cmake
 BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	pkgconfig(Qt5Core)
 # For doc generation
 BuildRequires:	python2-sphinx
 BuildRequires:	python2-setuptools
@@ -46,7 +47,12 @@ KDE Frameworks 5 cmake extra modules.
 
 %build
 %cmake -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
+    -DKDE_INSTALL_QTPLUGINDIR=%{_qt5_plugindir} \
+    -DKDE_INSTALL_PLUGINDIR=%{_qt5_plugindir} \
+    -DPLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \
+    -DQT_PLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \
+    -G Ninja
+
 ninja
 
 %install
