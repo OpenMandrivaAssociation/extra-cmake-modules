@@ -40,30 +40,32 @@
   %__cmake .. \\\
     $CROSSCOMPILE \\\
     -Wno-dev \\\
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
     -DCMAKE_BUILD_TYPE=%{_kde5_debug} \\\
     -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \\\
+    -DCMAKE_INSTALL_FULL_LIBEXECDIR=%{_libexecdir} \\\
+    -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=%{_libexecdir}/kf5 \\\
     -DKDE_INSTALL_APPDIR=%{_kde5_applicationsdir} \\\
     -DKDE_INSTALL_BINDIR=%{_kde5_bindir} \\\
     -DKDE_INSTALL_LIBDIR=%{_kde5_libdir} \\\
-    -DCMAKE_INSTALL_FULL_LIBEXECDIR=%{_libexecdir} \\\
-    -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=%{_libexecdir}/kf5 \\\
     -DKDE_INSTALL_INCLUDEDIR=%{_kde5_includedir} \\\
     -DKDE_INSTALL_DOCBUNDLEDIR=%{_kde5_docdir}/HTML \\\
+    -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=true \\\
+    -DKDE_INSTALL_QTPLUGINDIR=%{_qt5_plugindir} \\\
+    -DKDE_INSTALL_PLUGINDIR=%{_qt5_plugindir} \\\
+    -DPLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \\\
+    -DQT_PLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \\\
     -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
     -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
 %if "%{?_lib}" == "lib64" \
     %{?_cmake_lib_suffix64} \\\
 %endif \
     %{?_cmake_skip_rpath} \\\
-    %{?_cmake_verbose: -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON} \\\
-    -DBUILD_SHARED_LIBS:BOOL=ON \\\
-    -DBUILD_STATIC_LIBS:BOOL=OFF \\\
-    -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \\\
-    -DCMAKE_USE_RELATIVE_PATHS:BOOL=ON \\\
-    -DPLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \\\
-    -DQT_PLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \\\
+    %{?_cmake_verbose: -DCMAKE_VERBOSE_MAKEFILE:BOOL=true} \\\
+    -DBUILD_SHARED_LIBS:BOOL=true \\\
+    -DBUILD_STATIC_LIBS:BOOL=false \\\
+    -DCMAKE_USE_RELATIVE_PATHS:BOOL=true \\\
     -DCMAKE_C_FLAGS="${CFLAGS}" \\\
     -DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \\\
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="${CFLAGS}" \\\
