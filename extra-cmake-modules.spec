@@ -2,14 +2,14 @@
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-Name:		extra-cmake-modules5
+Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.19.0
 Release:	1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
-Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/extra-cmake-modules-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
 Source10:	kde5.macros
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
@@ -29,6 +29,7 @@ Requires:	ninja
 # Required by virtually all cmake modules shipped here
 Requires:	cmake(Qt5LinguistTools)
 Requires:	qt5-qtbase-platformtheme-gtk2
+%rename 	extra-cmake-modules5
 
 %description
 KDE Frameworks 5 cmake extra modules.
