@@ -1,4 +1,4 @@
 removed_sources:
   extra-cmake-modules-5.13.0.tar.xz: 9e96bbcf249b1dcf3cfd21c112791404fcf359d6
 sources:
-  extra-cmake-modules-5.20.0.tar.xz: 8c9b0141d72f5501cfb206d9f15e20f9f1ea3c33
+  extra-cmake-modules-5.21.0.tar.xz: a8f2752452c00f5ff4e71efe83cab74a2e72637a
