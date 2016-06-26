@@ -6,7 +6,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.23.0
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
@@ -28,7 +28,8 @@ Requires:	qmake5
 Requires:	ninja
 # Required by virtually all cmake modules shipped here
 Requires:	cmake(Qt5LinguistTools)
-Requires:	qt5-qtbase-platformtheme-gtk2
+# renamed since 5.7.0
+Requires:	qt5-qtbase-platformtheme-gtk3
 %rename 	extra-cmake-modules5
 
 %description
