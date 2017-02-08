@@ -30,7 +30,7 @@ Requires:	ninja
 Requires:	cmake(Qt5LinguistTools)
 %if "%product_branch" == "Official"
 # (tpg) a 3.0 release is still on Qt 5.6
-Requires:	qt5-qtbase-platformtheme-gtk2
+#Requires:	qt5-qtbase-platformtheme-gtk2
 %else
 # renamed since 5.7.0
 Requires:	qt5-qtbase-platformtheme-gtk3
