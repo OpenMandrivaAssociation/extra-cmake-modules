@@ -20,8 +20,8 @@ BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	qmake5
 # For doc generation
-BuildRequires:	python2-sphinx
-BuildRequires:	python2-setuptools
+BuildRequires:	python-sphinx
+BuildRequires:	python-setuptools
 BuildRequires:	ninja
 Requires:	cmake
 Requires:	qmake5
