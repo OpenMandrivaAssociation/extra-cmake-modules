@@ -15,7 +15,9 @@ Source10:	kde5.macros
 # about .GNU.stack
 Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
 BuildArch:	noarch
-BuildRequires:	cmake
+# Version dependency is to make sure we have the current version
+# of the cmake dependency generators
+BuildRequires:	cmake >= 3.11.2-1
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Quick)
@@ -24,7 +26,7 @@ BuildRequires:	qmake5
 BuildRequires:	python-sphinx
 BuildRequires:	python-setuptools
 BuildRequires:	ninja
-Requires:	cmake
+Requires:	cmake >= 3.11.2-1
 Requires:	qmake5
 Requires:	ninja
 # Required by virtually all cmake modules shipped here
