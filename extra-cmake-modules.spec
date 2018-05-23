@@ -21,6 +21,7 @@ BuildRequires:	cmake >= 3.11.2-1
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Quick)
+BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	qmake5
 # For doc generation
 BuildRequires:	python-sphinx
