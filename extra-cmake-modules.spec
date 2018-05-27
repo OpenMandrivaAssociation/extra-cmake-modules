@@ -21,7 +21,6 @@ BuildRequires:	cmake >= 3.11.2-1
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Quick)
-BuildRequires:	qt5-platformtheme-gtk3
 BuildRequires:	qmake5
 # For doc generation
 BuildRequires:	python-sphinx
@@ -31,15 +30,9 @@ Requires:	cmake >= 3.11.2-1
 Requires:	qmake5
 Requires:	ninja
 # Required by virtually all cmake modules shipped here
+Requires:	pkgconfig(Qt5Core)
+Requires:	pkgconfig(Qt5Quick)
 Requires:	cmake(Qt5LinguistTools)
-%if "%product_branch" == "Official"
-# (tpg) a 3.0 release is still on Qt 5.6
-# fedya no longer available since 5.7.0
-#Requires:	qt5-qtbase-platformtheme-gtk2
-%else
-# renamed since 5.7.0
-Requires:	qt5-qtbase-platformtheme-gtk3
-%endif
 %rename 	extra-cmake-modules5
 
 %description
