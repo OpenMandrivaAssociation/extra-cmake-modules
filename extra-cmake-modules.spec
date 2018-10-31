@@ -6,7 +6,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.51.0
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
