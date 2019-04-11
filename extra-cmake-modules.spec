@@ -6,7 +6,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.57.0
-Release:	2
+Release:	3
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
@@ -41,9 +41,32 @@ KDE Frameworks 5 cmake extra modules.
 
 %files
 %{_datadir}/ECM
+%exclude %{_datadir}/ECM/find-modules/FindPythonModuleGeneration.cmake
+%exclude %{_datadir}/ECM/find-modules/run-sip.py
+%exclude %{_datadir}/ECM/find-modules/sip_generator.py
 %{_mandir}/man7/*
 %{_sysconfdir}/rpm/macros.d/*
 %doc %{_docdir}/ECM
+
+# We split the python bits into a separate package because of the
+# large number of dependencies for cmake(PythonModuleGeneration)
+# to be useful...
+%package python
+Summary:	extra-cmake-modules components needed for Python module generation
+Group:		Graphical desktop/KDE
+Requires:	%{name} = %{EVRD}
+Requires:	python-sip
+Requires:	python-clang
+Requires:	pkgconfig(python3)
+Requires:	python-qt5-core
+
+%description python
+extra-cmake-modules components needed for Python module generation
+
+%files python
+%{_datadir}/ECM/find-modules/FindPythonModuleGeneration.cmake
+%{_datadir}/ECM/find-modules/run-sip.py
+%{_datadir}/ECM/find-modules/sip_generator.py
 
 #--------------------------------------------------------------------
 %prep
