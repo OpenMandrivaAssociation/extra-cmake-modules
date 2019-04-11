@@ -6,7 +6,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.57.0
-Release:	1
+Release:	2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
@@ -14,6 +14,7 @@ Source10:	kde5.macros
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
 Patch0:		extra-cmake-modules-1.0.0-no-ld-fatal-warnings.patch
+Patch1:		extra-cmake-modules-5.57.0-support-newer-clang.patch
 BuildArch:	noarch
 # Version dependency is to make sure we have the current version
 # of the cmake dependency generators
@@ -47,9 +48,10 @@ KDE Frameworks 5 cmake extra modules.
 #--------------------------------------------------------------------
 %prep
 %setup -qn extra-cmake-modules%{!?git:-%{version}}
-%ifnarch %ix86 x86_64
+%ifnarch %ix86 %{x86_64}
 %patch0 -p1 -b .ldfw~
 %endif
+%patch1 -p1 -b .clang~
 
 %build
 %cmake_qt5 \
