@@ -26,10 +26,10 @@
 
 %cmake_kde5 \
   %setup_compile_flags \
-  CPPFLAGS="${CPPFLAGS:-$CPPFLAGS -DPIC -fPIC}" ; export CPPFLAGS ; \
-  CFLAGS="${CFLAGS:-$CFLAGS -DPIC -fPIC}" ; export CFLAGS ; \
-  CXXFLAGS="${CXXFLAGS:-$CXXFLAGS -DPIC -fPIC}" ; export CXXFLAGS ; \
-  LDFLAGS="${LDFLAGS:-$LDFLAGS -DPIC -fPIC -Wl,-Bsymbolic-functions}" ; export LDFLAGS ; \
+  CPPFLAGS="${CPPFLAGS}" ; export CPPFLAGS ; \
+  CFLAGS="${CFLAGS}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS}" ; export CXXFLAGS ; \
+  LDFLAGS="${LDFLAGS:-$LDFLAGS -Wl,-Bsymbolic-functions}" ; export LDFLAGS ; \
   mkdir -p build \
   cd build \
   CROSSCOMPILE="" ; \
