@@ -6,7 +6,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	5.67.0
-Release:	3
+Release:	4
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
@@ -55,7 +55,7 @@ KDE Frameworks 5 cmake extra modules.
 Summary:	extra-cmake-modules components needed for Python module generation
 Group:		Graphical desktop/KDE
 Requires:	%{name} = %{EVRD}
-Requires:	python-sip
+Requires:	python-sip4
 Requires:	python-clang
 Requires:	clang-devel
 Requires:	pkgconfig(python3)
