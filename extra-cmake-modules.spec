@@ -87,9 +87,9 @@ extra-cmake-modules components needed for Python module generation
     -DQT_PLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \
     -G Ninja
 
-ninja
+%ninja_build
 
 %install
-DESTDIR="%{buildroot}" ninja install -C build
+%ninja_install -C build
 
 install -c -m 644 -D %{SOURCE10} "%{buildroot}"%{_sysconfdir}/rpm/macros.d/kde5.macros
