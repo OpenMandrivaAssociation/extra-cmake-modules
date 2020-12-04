@@ -25,7 +25,7 @@
 %_kde5_debug Release
 
 %cmake_kde5 \
-  %setup_compile_flags \
+  %set_build_flags \
   CPPFLAGS="${CPPFLAGS}" ; export CPPFLAGS ; \
   CFLAGS="${CFLAGS}" ; export CFLAGS ; \
   CXXFLAGS="${CXXFLAGS}" ; export CXXFLAGS ; \
