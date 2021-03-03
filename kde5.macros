@@ -13,10 +13,11 @@
 %_kde5_includedir %{_kde5_prefix}/include
 %_kde5_mandir %{_kde5_datadir}/man
 %_kde5_autostart %{_kde5_sysconfdir}/xdg/autostart
+%_kde5_package %{_kde5_datadir}/kpackage
 %_kde5_services %{_kde5_datadir}/kservices5
 %_kde5_servicetypes %{_kde5_datadir}/kservicetypes5
-%_kde5_notificationsdir %{_kde5_datadir}/knotifications
-%_kde5_plugindir %{_qt5_plugindir}/KF5
+%_kde5_notificationsdir %{_kde5_datadir}/knotifications5
+%_kde5_plugindir %{_qt5_plugindir}/kf5
 %_kde5_mkspecsdir %{_kde5_libdir}/qt5/mkspecs/modules
 %_kde5_qmldir %{_kde5_libdir}/qt5/qml
 %_kde5_xmlguidir %{_kde5_datadir}/kxmlgui5
