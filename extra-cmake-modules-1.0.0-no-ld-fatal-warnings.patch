@@ -1,14 +1,14 @@
-diff -up extra-cmake-modules-5.53.0/kde-modules/KDECompilerSettings.cmake.ldfw~ extra-cmake-modules-5.53.0/kde-modules/KDECompilerSettings.cmake
---- extra-cmake-modules-5.53.0/kde-modules/KDECompilerSettings.cmake.ldfw~	2018-12-02 00:18:26.851248621 +0100
-+++ extra-cmake-modules-5.53.0/kde-modules/KDECompilerSettings.cmake	2018-12-02 00:18:58.367261764 +0100
-@@ -343,10 +343,6 @@ endfunction()
- if ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND NOT APPLE) OR
+diff -up extra-cmake-modules-5.95.0/kde-modules/KDECompilerSettings.cmake.ldfw~ extra-cmake-modules-5.95.0/kde-modules/KDECompilerSettings.cmake
+--- extra-cmake-modules-5.95.0/kde-modules/KDECompilerSettings.cmake.ldfw~	2022-06-13 11:08:55.647251991 +0200
++++ extra-cmake-modules-5.95.0/kde-modules/KDECompilerSettings.cmake	2022-06-13 11:10:41.619651079 +0200
+@@ -534,8 +534,8 @@ if ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU
          (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT APPLE) OR
          (CMAKE_CXX_COMPILER_ID STREQUAL "Intel" AND NOT WIN32))
--    # Linker warnings should be treated as errors
+     # Linker warnings should be treated as errors
 -    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
 -    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
--
++    #set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
++    #set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
+ 
      # Do not allow undefined symbols, even in non-symbolic shared libraries
-     set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
-     set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_MODULE_LINKER_FLAGS}")
+     # On OpenBSD we must disable this to allow the stuff to properly compile without explicit libc specification
