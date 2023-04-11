@@ -1,15 +1,20 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
+%define git 20230411
 
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	5.105.0
-Release:	1
+Version:	5.240.0
+Release:	%{?git:0.%{git}.}1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/frameworks/extra-cmake-modules/-/archive/master/extra-cmake-modules-master.tar.bz2
+%else
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
+%endif
 Source10:	kde5.macros
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
 # about .GNU.stack
@@ -72,7 +77,7 @@ extra-cmake-modules components needed for Python module generation
 
 #--------------------------------------------------------------------
 %prep
-%setup -qn extra-cmake-modules%{!?git:-%{version}}
+%setup -qn extra-cmake-modules%{!?git:-%{version}}%{?git:-master}
 %ifnarch %ix86 %{x86_64}
 %patch0 -p1 -b .ldfw~
 %endif
