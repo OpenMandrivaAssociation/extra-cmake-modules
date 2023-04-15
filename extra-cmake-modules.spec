@@ -1,7 +1,7 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230411
+%define git 20230415
 
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
@@ -11,7 +11,7 @@ Release:	%{?git:0.%{git}.}1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/frameworks/extra-cmake-modules/-/archive/master/extra-cmake-modules-master.tar.bz2
+Source0:	https://invent.kde.org/frameworks/extra-cmake-modules/-/archive/master/extra-cmake-modules-master.tar.bz2#/extra-cmake-modules-%{git}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version}.tar.xz
 %endif
@@ -33,7 +33,10 @@ BuildRequires:	python-sphinx
 BuildRequires:	python-setuptools
 BuildRequires:	ninja
 Requires:	cmake >= 3.11.2-1
+# For Qt 5 detection
 Requires:	qmake5
+# For Qt 6 detection
+Requires:	qt6-qtbase-tools
 Requires:	ninja
 # Required by virtually all cmake modules shipped here
 Requires:	pkgconfig(Qt5Core)
