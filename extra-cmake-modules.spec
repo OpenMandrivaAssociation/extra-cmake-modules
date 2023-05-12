@@ -1,7 +1,7 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230420
+%define git 20230513
 
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
@@ -83,9 +83,9 @@ extra-cmake-modules components needed for Python module generation
 %prep
 %setup -qn extra-cmake-modules%{!?git:-%{version}}%{?git:-master}
 %ifnarch %ix86 %{x86_64}
-%patch0 -p1 -b .ldfw~
+%patch 0 -p1 -b .ldfw~
 %endif
-%patch1 -p1 -b .clang~
+%patch 1 -p1 -b .clang~
 
 %build
 %cmake_qt5 \

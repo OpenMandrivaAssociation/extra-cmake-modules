@@ -6,7 +6,7 @@ diff -up extra-cmake-modules-5.57.0/find-modules/FindPythonModuleGeneration.cmak
  
  if (NOT libclang_LIBRARY)
 -  set(_LIBCLANG_MAX_MAJOR_VERSION 7)
-+  set(_LIBCLANG_MAX_MAJOR_VERSION 14)
++  set(_LIBCLANG_MAX_MAJOR_VERSION 16)
    set(_LIBCLANG_MIN_MAJOR_VERSION 5)
  
    find_library(libclang_LIBRARY clang-${_LIBCLANG_MAX_MAJOR_VERSION}.0)
