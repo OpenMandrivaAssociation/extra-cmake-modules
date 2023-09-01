@@ -1,7 +1,7 @@
 #define git 1
 %define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20230825
+%define git 20230901
 
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
