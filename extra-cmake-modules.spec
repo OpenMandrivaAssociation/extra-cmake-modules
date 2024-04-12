@@ -1,12 +1,12 @@
-%define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,').0
+%define major %(echo %{version} |cut -d. -f1-2 |sed -e 's,^1,5,')
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 #define git 20240217
 
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	6.0.0
-Release:	%{?git:0.%{git}.}2
+Version:	6.1.0
+Release:	%{?git:0.%{git}.}1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 %if 0%{?git:1}
