@@ -7,7 +7,7 @@ Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
 Version:	6.11.0
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 %if 0%{?git:1}
@@ -35,10 +35,6 @@ Requires:	qmake5
 Requires:	qt6-qtbase-tools
 Requires:	cmake(Qt6CoreTools)
 Requires:	ninja
-# Required by virtually all cmake modules shipped here
-Requires:	pkgconfig(Qt5Core)
-Requires:	pkgconfig(Qt5Quick)
-Requires:	cmake(Qt5LinguistTools)
 %rename 	extra-cmake-modules5
 Obsoletes:	%{name}-python < %{EVRD}
 
