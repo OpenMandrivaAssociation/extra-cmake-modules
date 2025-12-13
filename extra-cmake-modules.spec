@@ -6,7 +6,7 @@
 Name:		extra-cmake-modules
 Summary:	KDE Frameworks 5 cmake extra modules
 Group:		Graphical desktop/KDE
-Version:	6.20.0
+Version:	6.21.0
 Release:	%{?git:0.%{git}.}1
 License:	GPL
 URL:		https://projects.kde.org/projects/kdesupport/extra-cmake-modules
@@ -17,26 +17,28 @@ Source0:	http://download.kde.org/%{stable}/frameworks/%{major}/%{name}-%{version
 %endif
 Source10:	kde5.macros
 BuildArch:	noarch
-# Version dependency is to make sure we have the current version
-# of the cmake dependency generators
-BuildRequires:	cmake >= 3.11.2-1
-BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Quick)
-BuildRequires:	qmake5
+BuildSystem:	cmake
+BuildOption:    -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 # For doc generation
 BuildRequires:	python-sphinx
-BuildRequires:	python-setuptools
+BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	ninja
 Requires:	cmake >= 3.11.2-1
-# For Qt 5 detection
-Requires:	qmake5
 # For Qt 6 detection
 Requires:	qt6-qtbase-tools
 Requires:	cmake(Qt6CoreTools)
 Requires:	ninja
 %rename 	extra-cmake-modules5
 Obsoletes:	%{name}-python < %{EVRD}
+
+%package plasma5
+Summary:	Support for outdated Plasma 5.x in extra-cmake-modules
+Requires:	%{name} = %{EVRD}
+# For Qt 5 detection
+Requires:	qmake5
+
+%description plasma5
+Support for outdated Plasma 5.x in extra-cmake-modules
 
 %patchlist
 # We can't use -Wl,--fatal-warnings on ARM because of warnings
@@ -49,25 +51,10 @@ KDE Frameworks cmake extra modules.
 %files
 %{_datadir}/ECM
 %{_mandir}/man7/*
-%{_sysconfdir}/rpm/macros.d/*
 %doc %{_docdir}/ECM
 
-#--------------------------------------------------------------------
-%prep
-%autosetup -p1 -n extra-cmake-modules%{!?git:-%{version}}%{?git:-master}
+%files plasma5
+%{_sysconfdir}/rpm/macros.d/kde5.macros
 
-%build
-%cmake \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-    -DKDE_INSTALL_QTPLUGINDIR=%{_qt5_plugindir} \
-    -DKDE_INSTALL_PLUGINDIR=%{_qt5_plugindir} \
-    -DPLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \
-    -DQT_PLUGIN_INSTALL_DIR:PATH=%{_qt5_plugindir} \
-    -G Ninja
-
-%ninja_build
-
-%install
-%ninja_install -C build
-
+%install -a
 install -c -m 644 -D %{SOURCE10} "%{buildroot}"%{_sysconfdir}/rpm/macros.d/kde5.macros
